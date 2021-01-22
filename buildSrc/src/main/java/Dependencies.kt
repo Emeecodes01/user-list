@@ -186,6 +186,19 @@ fun DependencyHandler.remote() {
 }
 
 
+fun DependencyHandler.cache() {
+    add("implementation", Dependencies.AndroidX.kotlinStdlib)
+    add("api", Dependencies.Persistence.room)
+    add("api", Dependencies.Persistence.roomExt)
+    add("implementation", Dependencies.Api.gson)
+    add("kapt", Dependencies.Persistence.roomCompiler)
+    add("implementation", project(":domain"))
+    unitTestDeps()
+    androidX()
+    androidUITestDeps()
+}
+
+
 fun DependencyHandler.archComponent() {
     add("implementation", Dependencies.Architecture.viewModel)
     add("implementation", Dependencies.Architecture.viewModelKtx)
@@ -216,6 +229,8 @@ fun DependencyHandler.androidUITestDeps() {
     add("androidTestImplementation", TestDependencies.androidJunit)
     add("androidTestImplementation", TestDependencies.espresso)
     add("androidTestImplementation", TestDependencies.annotation)
+    add("androidTestImplementation", TestDependencies.truth)
+    add("androidTestImplementation", TestDependencies.konveyor)
 }
 
 

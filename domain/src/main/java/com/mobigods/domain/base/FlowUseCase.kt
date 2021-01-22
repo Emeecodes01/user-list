@@ -1,8 +1,8 @@
-package ng.softcom.domain.base
+package com.mobigods.domain.base
 
+import com.mobigods.domain.thread.ExecutionThread
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
-import ng.softcom.domain.thread.ExecutionThread
 
 abstract class FlowUseCase<in Params, T> constructor(
     private val threadExecutor: ExecutionThread

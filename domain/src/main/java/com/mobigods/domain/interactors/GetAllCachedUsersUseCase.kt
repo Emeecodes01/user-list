@@ -1,10 +1,10 @@
 package com.mobigods.domain.interactors
 
+import com.mobigods.domain.base.FlowUseCase
 import com.mobigods.domain.models.User
 import com.mobigods.domain.repository.cache.UserListCacheRepository
 import com.mobigods.domain.thread.ExecutionThread
 import kotlinx.coroutines.flow.Flow
-import ng.softcom.domain.base.FlowUseCase
 import javax.inject.Inject
 
 class GetAllCachedUsersUseCase @Inject constructor(
@@ -16,6 +16,5 @@ class GetAllCachedUsersUseCase @Inject constructor(
     override fun buildFlowUseCase(params: Unit?): Flow<List<User>> {
         return cacheRepository.getAllUsers()
     }
-
 
 }

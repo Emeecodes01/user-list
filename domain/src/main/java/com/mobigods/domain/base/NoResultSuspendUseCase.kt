@@ -1,7 +1,7 @@
-package ng.softcom.domain.base
+package com.mobigods.domain.base
 
+import com.mobigods.domain.thread.ExecutionThread
 import kotlinx.coroutines.withContext
-import ng.softcom.domain.thread.ExecutionThread
 
 abstract class NoResultSuspendUseCase<in P>(
     private val executionThread: ExecutionThread

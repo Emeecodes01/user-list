@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface UserListRemoteRepository {
     suspend fun fetchUsers(): List<User>
+    suspend fun fetchUser(userId: String): User
 }

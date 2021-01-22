@@ -1,4 +1,4 @@
-package com.mobigods.domain.interactors
+package com.mobigods.domain.interactors.users
 
 import com.mobigods.domain.base.FlowUseCase
 import com.mobigods.domain.models.User

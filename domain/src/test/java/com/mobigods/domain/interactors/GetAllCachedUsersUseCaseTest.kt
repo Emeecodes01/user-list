@@ -1,9 +1,9 @@
 package com.mobigods.domain.interactors
 
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.*
 import com.mobigods.domain.interactors.testutils.DataGenerator
 import com.mobigods.domain.interactors.testutils.TestExecutionThreadImpl
+import com.mobigods.domain.interactors.users.GetAllCachedUsersUseCase
 import com.mobigods.domain.models.User
 import com.mobigods.domain.repository.cache.UserListCacheRepository
 import io.mockk.MockKAnnotations
@@ -11,13 +11,10 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import io.mockk.verify
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Test
 
 class GetAllCachedUsersUseCaseTest {

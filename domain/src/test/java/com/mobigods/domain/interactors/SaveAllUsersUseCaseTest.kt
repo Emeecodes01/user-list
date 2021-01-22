@@ -4,6 +4,7 @@ package com.mobigods.domain.interactors
 import com.google.common.truth.Truth.*
 import com.mobigods.domain.interactors.testutils.DataGenerator
 import com.mobigods.domain.interactors.testutils.TestExecutionThreadImpl
+import com.mobigods.domain.interactors.users.SaveAllUsersUseCase
 import com.mobigods.domain.models.User
 import com.mobigods.domain.repository.cache.UserListCacheRepository
 import io.mockk.*
@@ -11,7 +12,6 @@ import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 
-import org.junit.Assert.*
 import org.junit.Test
 
 class SaveAllUsersUseCaseTest {

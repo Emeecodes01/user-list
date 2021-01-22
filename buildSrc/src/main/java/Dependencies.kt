@@ -1,4 +1,5 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
+import org.gradle.kotlin.dsl.project
 
 const val kotlinVersion = "1.4.0"
 const val gradle = "4.1.1"
@@ -175,10 +176,26 @@ fun DependencyHandler.domain() {
 }
 
 
+fun DependencyHandler.remote() {
+    add("implementation", Dependencies.AndroidX.kotlinStdlib)
+    add("implementation", project(":domain"))
+    network()
+    coroutines()
+    dagger()
+    unitTestDeps()
+}
+
+
 fun DependencyHandler.archComponent() {
     add("implementation", Dependencies.Architecture.viewModel)
     add("implementation", Dependencies.Architecture.viewModelKtx)
 }
+
+fun DependencyHandler.coroutines() {
+    add("implementation", Dependencies.Async.ktCoroutines)
+    add("implementation", Dependencies.Async.ktCoroutinesAndroid)
+}
+
 
 fun DependencyHandler.navigationComponent() {
     add("api", Dependencies.Navigation.navFragment)
@@ -208,6 +225,12 @@ fun DependencyHandler.androidX(){
     add("implementation", Dependencies.AndroidX.activityExtLib)
 }
 
+fun DependencyHandler.network() {
+    add("api", Dependencies.Api.retrofit)
+    add("api", Dependencies.Api.okhttpInterceptor)
+    add("api", Dependencies.Api.gson)
+    add("api", Dependencies.Api.gsonConverter)
+}
 
 fun DependencyHandler.dagger() {
     add("api", Dependencies.DependencyInjection.daggerHilt)

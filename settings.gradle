@@ -1,5 +1,0 @@
-include ':domain'
-include ':cache'
-include ':remote'
-include ':app'
-rootProject.name = "UserList"

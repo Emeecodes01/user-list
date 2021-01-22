@@ -15,7 +15,7 @@ object Config {
     }
 
     object Android {
-        const val applicationId = "ng.softcom.databeaver"
+        const val applicationId = "com.mobigods.userlist"
         const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -59,9 +59,11 @@ object Dependencies {
             const val aviLoadingVersion = "2.1.3"
             const val philChartLib = "v3.1.0"
             const val customRadioLib = "v2.1.1"
+            const val rvAnimator = "4.0.1"
         }
         const val materialDesign = "com.google.android.material:material:${Versions.materialDesignComps}"
         const val constraintLayoutDep = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+        const val recyclerViewAnimator = "jp.wasabeef:recyclerview-animators:${Versions.rvAnimator}"
         const val progressButtonLib = "com.mikhaellopez:circularprogressbar:${Versions.progressButton}"
         const val loadingView = "com.github.ybq:Android-SpinKit:${Versions.loadingView}"
         const val pagerIndicator = "com.github.adrielcafe:PageIndicatorView:${Versions.pagerIndicator}"
@@ -199,6 +201,22 @@ fun DependencyHandler.cache() {
 }
 
 
+fun DependencyHandler.presentation() {
+    add("implementation", Dependencies.AndroidX.kotlinStdlib)
+    add("implementation", Dependencies.UILibs.materialDesign)
+    add("implementation", Dependencies.UILibs.constraintLayoutDep)
+    add("implementation", Dependencies.UILibs.recyclerViewAnimator)
+    add("implementation", project(":remote"))
+    add("implementation", project(":cache"))
+    archComponent()
+    dagger()
+    unitTestDeps()
+    androidUITestDeps()
+    androidX()
+    navigationComponent()
+}
+
+
 fun DependencyHandler.archComponent() {
     add("implementation", Dependencies.Architecture.viewModel)
     add("implementation", Dependencies.Architecture.viewModelKtx)
@@ -211,9 +229,9 @@ fun DependencyHandler.coroutines() {
 
 
 fun DependencyHandler.navigationComponent() {
-    add("api", Dependencies.Navigation.navFragment)
-    add("api", Dependencies.Navigation.navUI)
-    add("api", Dependencies.Navigation.navFeatureModule)
+    add("implementation", Dependencies.Navigation.navFragment)
+    add("implementation", Dependencies.Navigation.navUI)
+    add("implementation", Dependencies.Navigation.navFeatureModule)
 }
 
 fun DependencyHandler.unitTestDeps() {

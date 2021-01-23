@@ -13,6 +13,10 @@ android {
     compileSdkVersion(Config.Versions.compileSdkVer)
     buildToolsVersion(Config.Versions.buildToolsVer)
 
+    buildFeatures {
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = Config.Android.applicationId
         minSdkVersion(Config.Versions.minSdk)
@@ -42,5 +46,5 @@ android {
 }
 
 dependencies {
-    presentation()
+    app()
 }

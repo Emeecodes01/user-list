@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.UserList" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.UserList" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -12,5 +12,25 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+
+
+        <!-- Material Text styles-->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.UserList.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.UserList.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.UserList.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.UserList.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.UserList.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.UserList.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.UserList.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.UserList.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.UserList.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.UserList.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.UserList.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.UserList.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.UserList.Overline</item>
+
+
     </style>
+
 </resources>

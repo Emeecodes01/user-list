@@ -21,5 +21,5 @@ abstract class UserDao {
     abstract fun getAllUsers(): Flow<List<UserCacheModel>>
 
     @Query("SELECT * FROM users WHERE id =:userId ")
-    abstract suspend fun getUser(userId: String): UserCacheModel?
+    abstract fun getUser(userId: String): Flow<UserCacheModel>
 }

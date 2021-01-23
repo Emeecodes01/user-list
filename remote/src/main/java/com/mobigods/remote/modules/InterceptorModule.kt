@@ -1,5 +1,6 @@
 package com.mobigods.remote.modules
 
+import com.mobigods.remote.interceptors.AuthInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,4 +20,8 @@ class InterceptorModule {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
+
+    @Provides
+    @Singleton
+    fun provideAuthInterceptor(): AuthInterceptor = AuthInterceptor()
 }

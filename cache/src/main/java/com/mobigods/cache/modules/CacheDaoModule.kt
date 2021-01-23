@@ -17,6 +17,4 @@ class CacheDaoModule {
     @Singleton
     fun provideUserDao(database: AppDatabase): UserDao
     = database.userDao()
-
-
 }

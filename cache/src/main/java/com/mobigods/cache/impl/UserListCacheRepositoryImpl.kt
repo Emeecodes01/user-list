@@ -30,9 +30,10 @@ class UserListCacheRepositoryImpl @Inject constructor(
     }
 
 
-    override suspend fun getUser(userId: String): User? {
-        val user = userDao.getUser(userId)
-        return user?.let { userCacheModelMapper.mapFrom(it) }
+    override fun getUser(userId: String): Flow<User> {
+        return userDao.getUser(userId).flatMapConcat { value: UserCacheModel ->
+            flowOf(userCacheModelMapper.mapFrom(value))
+        }
     }
 
 }

@@ -1,3 +1,4 @@
+import Dependencies.UILibs.Versions.circularImage
 import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.kotlin.dsl.project
 
@@ -53,44 +54,42 @@ object Dependencies {
         object Versions {
             const val materialDesignComps = "1.2.1"
             const val constraintLayout = "2.0.4"
-            const val progressButton = "3.0.3"
-            const val loadingView = "1.4.0"
-            const val pagerIndicator = "1.0.6"
-            const val aviLoadingVersion = "2.1.3"
-            const val philChartLib = "v3.1.0"
-            const val customRadioLib = "v2.1.1"
             const val rvAnimator = "4.0.1"
+            const val loadingDialog = "1.2.1"
+            const val circularImage = "3.1.0"
         }
+
         const val materialDesign = "com.google.android.material:material:${Versions.materialDesignComps}"
         const val constraintLayoutDep = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
         const val recyclerViewAnimator = "jp.wasabeef:recyclerview-animators:${Versions.rvAnimator}"
-        const val progressButtonLib = "com.mikhaellopez:circularprogressbar:${Versions.progressButton}"
-        const val loadingView = "com.github.ybq:Android-SpinKit:${Versions.loadingView}"
-        const val pagerIndicator = "com.github.adrielcafe:PageIndicatorView:${Versions.pagerIndicator}"
-        const val aviLoading = "com.wang.avi:library:${Versions.aviLoadingVersion}"
-        const val philChartLib = "com.github.PhilJay:MPAndroidChart:${Versions.philChartLib}"
-        const val radioRealButton = "com.github.ceryle:RadioRealButton:${Versions.customRadioLib}"
+        const val loadingDep = "cc.cloudist.acplibrary:library:${Versions.loadingDialog}"
+        const val circularImageView = "de.hdodenhof:circleimageview:${circularImage}"
     }
 
 
     object Persistence {
         object Versions {
             const val roomVersion = "2.2.5"
+            const val preferenceDataStore = "1.0.0-alpha06"
         }
 
         const val room = "androidx.room:room-runtime:${Versions.roomVersion}"
         const val roomCompiler = "androidx.room:room-compiler:${Versions.roomVersion}"
         const val roomExt = "androidx.room:room-ktx:${Versions.roomVersion}"
+        const val preferenceDataStore = "androidx.datastore:datastore-preferences:${Versions.preferenceDataStore}"
     }
 
 
     object DependencyInjection {
         object Version {
             const val daggerHiltVersion = "2.28-alpha"
+            const val hiltArchComp = "1.0.0-alpha01"
         }
 
         const val daggerHilt = "com.google.dagger:hilt-android:${Version.daggerHiltVersion}"
         const val daggerCompiler = "com.google.dagger:hilt-android-compiler:${Version.daggerHiltVersion}"
+        const val hiltViewModelCompiler = "androidx.hilt:hilt-compiler:${Version.hiltArchComp}"
+        const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.hiltArchComp}"
     }
 
 
@@ -140,6 +139,13 @@ object Dependencies {
         object Version {
             const val spotless = "3.27.0"
         }
+    }
+
+    object Image {
+        object Version {
+            const val glide = "4.11.0"
+        }
+        const val glide = "com.github.bumptech.glide:glide:${Version.glide}"
     }
 
 }
@@ -195,21 +201,29 @@ fun DependencyHandler.cache() {
     add("implementation", Dependencies.Api.gson)
     add("kapt", Dependencies.Persistence.roomCompiler)
     add("implementation", project(":domain"))
+    add("implementation", Dependencies.Persistence.preferenceDataStore)
+    dagger()
     unitTestDeps()
     androidX()
     androidUITestDeps()
 }
 
 
-fun DependencyHandler.presentation() {
+fun DependencyHandler.app() {
     add("implementation", Dependencies.AndroidX.kotlinStdlib)
     add("implementation", Dependencies.UILibs.materialDesign)
     add("implementation", Dependencies.UILibs.constraintLayoutDep)
     add("implementation", Dependencies.UILibs.recyclerViewAnimator)
+    add("implementation", Dependencies.DependencyInjection.hiltViewModel)
+    add("kapt", Dependencies.DependencyInjection.hiltViewModelCompiler)
+    add("implementation", Dependencies.UILibs.loadingDep)
+    add("implementation", Dependencies.UILibs.circularImageView)
     add("implementation", project(":remote"))
     add("implementation", project(":cache"))
+    add("implementation", project(":domain"))
     archComponent()
     dagger()
+    glide()
     unitTestDeps()
     androidUITestDeps()
     androidX()
@@ -268,4 +282,8 @@ fun DependencyHandler.network() {
 fun DependencyHandler.dagger() {
     add("api", Dependencies.DependencyInjection.daggerHilt)
     add("kapt", Dependencies.DependencyInjection.daggerCompiler)
+}
+
+fun DependencyHandler.glide() {
+    add("api", Dependencies.Image.glide)
 }

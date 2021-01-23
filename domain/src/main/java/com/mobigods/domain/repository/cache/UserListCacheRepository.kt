@@ -7,5 +7,5 @@ interface UserListCacheRepository {
     suspend fun saveAllUsers(users: List<User>): List<Long>
     suspend fun saveUser(user: User)
     fun getAllUsers(): Flow<List<User>>
-    suspend fun getUser(userId: String): User?
+    fun getUser(userId: String): Flow<User>
 }

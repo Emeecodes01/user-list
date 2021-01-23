@@ -9,8 +9,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
-@Module
 @InstallIn(ApplicationComponent::class)
+@Module
 abstract class RemoteImplModule {
 
     @Binds

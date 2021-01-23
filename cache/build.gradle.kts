@@ -10,10 +10,6 @@ android {
     buildToolsVersion(Config.Versions.buildToolsVer)
     compileSdkVersion(Config.Versions.compileSdkVer)
 
-    buildFeatures {
-        dataBinding = true
-    }
-
     defaultConfig {
         minSdkVersion(Config.Versions.minSdk)
         targetSdkVersion(Config.Versions.targetSdk)

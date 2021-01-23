@@ -2,6 +2,7 @@ package com.mobigods.domain.interactors.users
 
 import com.mobigods.domain.base.SuspendUseCase
 import com.mobigods.domain.models.User
+import com.mobigods.domain.repository.cache.IDataStoreManager
 import com.mobigods.domain.repository.remote.UserListRemoteRepository
 import com.mobigods.domain.thread.ExecutionThread
 import javax.inject.Inject

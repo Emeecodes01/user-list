@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">UserList</string>
+    <string name="loading">Loading</string>
+    <string name="country">country</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.UserList.HeadlineText" parent="TextAppearance.UserList.Headline5">
+        <item name="android:textColor">@color/down_river</item>
+    </style>
+
+    <style name="Widget.UserList.SmallHeadLineText" parent="TextAppearance.UserList.Headline6">
+        <item name="android:textColor">@color/comet</item>
+    </style>
+</resources>

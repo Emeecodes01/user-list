@@ -24,12 +24,14 @@ android {
         named("release") {
             isMinifyEnabled = false
             buildConfigField("String", "BASE_URL", "\"https://dummyapi.io/\"")
+            buildConfigField("String", "APP_ID", "\"600ac8b364266e3d0faa1036\"")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-logic.pro")
         }
 
         named("debug") {
             isMinifyEnabled = false
             buildConfigField("String", "BASE_URL", "\"https://dummyapi.io/\"")
+            buildConfigField("String", "APP_ID", "\"600ac8b364266e3d0faa1036\"")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-logic.pro")
         }
 

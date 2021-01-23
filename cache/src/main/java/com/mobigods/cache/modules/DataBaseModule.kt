@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
 @Module
@@ -16,7 +17,7 @@ class DataBaseModule {
 
     @Provides
     @Singleton
-    fun provideUseFormsDatabase(context: Context): AppDatabase =
+    fun provideUseFormsDatabase(@ApplicationContext context: Context): AppDatabase =
         database(context, CacheConstants.DATABASE_NAME){}
 
 }

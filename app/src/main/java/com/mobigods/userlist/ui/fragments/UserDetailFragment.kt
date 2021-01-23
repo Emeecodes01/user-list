@@ -43,6 +43,9 @@ class UserDetailFragment: BaseFragment<FragmentUserDetailBinding>() {
         super.onViewCreated(view, savedInstanceState)
 
         userDetailViewModel.getUserDetail(userDetailFragmentArgs.userId)
+        binding.materialToolbar2.setNavigationOnClickListener {
+            goBack()
+        }
     }
 
 }

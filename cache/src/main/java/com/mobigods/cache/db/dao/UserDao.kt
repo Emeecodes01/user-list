@@ -1,9 +1,6 @@
 package com.mobigods.cache.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.mobigods.cache.models.UserCacheModel
 import com.mobigods.domain.models.User
 import kotlinx.coroutines.flow.Flow
@@ -22,4 +19,7 @@ abstract class UserDao {
 
     @Query("SELECT * FROM users WHERE id =:userId ")
     abstract fun getUser(userId: String): Flow<UserCacheModel>
+
+    @Update
+    abstract suspend fun updateUser(userCacheModel: UserCacheModel): Int
 }

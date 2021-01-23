@@ -33,4 +33,8 @@
 
     </style>
 
+    <style name="ThemeOverlay.UserList" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="colorSecondary">@color/teal_700</item>
+    </style>
+
 </resources>

@@ -20,7 +20,7 @@ class UserListCacheRepositoryImpl @Inject constructor(
     }
 
     override suspend fun saveUser(user: User) {
-        userDao.saveUser(userCacheModelMapper.mapTo(user))
+        userDao.updateUser(userCacheModelMapper.mapTo(user))
     }
 
     override fun getAllUsers(): Flow<List<User>> {

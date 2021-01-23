@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable
             name="user"
             type="com.mobigods.userlist.models.UserModel" />
@@ -20,16 +21,26 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
+
+        <ProgressBar
+            android:id="@+id/user_detail_progress"
+            android:visibility="@{user.location.city.length() > 0 ? View.GONE : View.VISIBLE}"
+            style="@style/Widget.UserList.HorizontalProgress"
+            android:indeterminate="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialToolbar2" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             app:imageUrl="@{user.picture}"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:elevation="6dp"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="2dp"
             app:layout_constraintBottom_toTopOf="@+id/materialCardView"
             app:layout_constraintEnd_toEndOf="@+id/materialCardView"
             app:layout_constraintStart_toStartOf="@+id/materialCardView"

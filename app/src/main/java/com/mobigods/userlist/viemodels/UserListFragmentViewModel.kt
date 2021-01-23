@@ -22,8 +22,8 @@ class UserListFragmentViewModel @ViewModelInject constructor(
     private val userModelMapper: UserModelMapper
 ): ViewModel() {
 
-    private val _userListRemote: MutableLiveData<UserListResource<List<UserModel>>> = MutableLiveData()
-    val userListRemote: LiveData<UserListResource<List<UserModel>>> = _userListRemote
+    private val _userListRemote: MutableLiveData<UserListResource<Unit>> = MutableLiveData()
+    val userListRemote: LiveData<UserListResource<Unit>> = _userListRemote
 
 
     private val _userList: MutableLiveData<UserListResource<List<UserModel>>> = MutableLiveData()
@@ -31,7 +31,7 @@ class UserListFragmentViewModel @ViewModelInject constructor(
 
     private val errorHandler = CoroutineExceptionHandler { _, throwable ->
         throwable.printStackTrace()
-        _userList.value = UserListResource.Error(throwable.message)
+        _userListRemote.value = UserListResource.Error(throwable.message)
     }
 
 
@@ -54,11 +54,10 @@ class UserListFragmentViewModel @ViewModelInject constructor(
 
 
 
-    private fun getRemoteUsers() {
-        _userList.value = UserListResource.Loading()
-        viewModelScope.launch {
-            getUserListUseCase.invoke()
-        }
+    private suspend fun getRemoteUsers() {
+        _userListRemote.value = UserListResource.Loading()
+         getUserListUseCase.invoke()
+        _userListRemote.value = UserListResource.Success(Unit)
     }
 
 

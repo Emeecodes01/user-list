@@ -3,6 +3,7 @@ package com.mobigods.remote.impl
 import com.google.common.truth.Truth
 import com.google.common.truth.Truth.*
 import com.mobigods.domain.models.User
+import com.mobigods.domain.repository.cache.IDataStoreManager
 import com.mobigods.domain.repository.cache.UserListCacheRepository
 import com.mobigods.remote.mappers.LocationRemoteMapper
 import com.mobigods.remote.mappers.UserRemoteModelMapper
@@ -27,6 +28,9 @@ class UserListRemoteImplTest {
     @MockK
     lateinit var cache: UserListCacheRepository
 
+    @MockK
+    lateinit var dataStore: IDataStoreManager
+
     private val mapper = UserRemoteModelMapper(LocationRemoteMapper())
 
     private lateinit var userListRemoteImpl: UserListRemoteImpl
@@ -38,7 +42,7 @@ class UserListRemoteImplTest {
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        userListRemoteImpl = UserListRemoteImpl(service, cache, mapper)
+        userListRemoteImpl = UserListRemoteImpl(service, cache, dataStore, mapper)
     }
 
     @Test

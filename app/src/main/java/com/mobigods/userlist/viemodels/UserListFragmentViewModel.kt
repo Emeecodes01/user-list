@@ -33,6 +33,11 @@ class UserListFragmentViewModel @ViewModelInject constructor(
         _userListRemote.value = UserListResource.Error(throwable.message)
     }
 
+    private val cachedErrorHandler = CoroutineExceptionHandler { _, throwable ->
+        throwable.printStackTrace()
+        _userList.value = UserListResource.Error(throwable.message)
+    }
+
     fun getUsers() {
         getCachedUsers()
         viewModelScope.launch(errorHandler) {
@@ -41,8 +46,8 @@ class UserListFragmentViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun getCachedUsers() {
-        viewModelScope.launch {
+    fun getCachedUsers() {
+        viewModelScope.launch(cachedErrorHandler) {
             getAllCachedUsersUseCase.execute().collect {
                 _userList.value =
                     UserListResource.Success(it.map { user -> userModelMapper.mapTo(user) })
@@ -50,7 +55,7 @@ class UserListFragmentViewModel @ViewModelInject constructor(
         }
     }
 
-    private suspend fun getRemoteUsers() {
+    suspend fun getRemoteUsers() {
         _userListRemote.value = UserListResource.Loading()
         getUserListUseCase.invoke()
         _userListRemote.value = UserListResource.Success(Unit)

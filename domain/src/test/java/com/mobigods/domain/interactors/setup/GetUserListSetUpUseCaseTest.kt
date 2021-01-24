@@ -19,13 +19,11 @@ class GetUserListSetUpUseCaseTest {
 
     private lateinit var getUserListSetUpUseCase: GetUserListSetUpUseCase
 
-
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         getUserListSetUpUseCase = GetUserListSetUpUseCase(executor, datastoreManager)
     }
-
 
     @Test
     fun `verify that invoke returns a boolean`() = runBlockingTest {
@@ -39,6 +37,4 @@ class GetUserListSetUpUseCaseTest {
     private fun stubResponse() {
         coEvery { datastoreManager.isUserListSetUp } returns true
     }
-
-
 }

@@ -9,10 +9,10 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import io.mockk.slot
+import java.lang.IllegalStateException
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
-import java.lang.IllegalStateException
 
 class GetUserRemoteUseCaseTest {
 
@@ -27,19 +27,16 @@ class GetUserRemoteUseCaseTest {
         const val USER_ID = "user-id"
     }
 
-
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
         getUserRemoteUseCase = GetUserRemoteUseCase(executionThread, repository)
     }
 
-
     @Test(expected = IllegalStateException::class)
     fun `throws an error when called with a null params`() = runBlockingTest {
         getUserRemoteUseCase.invoke(null)
     }
-
 
     @Test
     fun `verity its successful when called with the correct params`() = runBlockingTest {
@@ -52,7 +49,6 @@ class GetUserRemoteUseCaseTest {
         assertThat(slot.captured)
             .isEqualTo(USER_ID)
     }
-
 
     private fun stubResponse() {
         coEvery { repository.fetchUser(any()) } returns DataGenerator.generateUser()

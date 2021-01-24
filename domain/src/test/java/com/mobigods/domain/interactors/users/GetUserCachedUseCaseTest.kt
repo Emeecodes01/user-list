@@ -8,12 +8,12 @@ import com.mobigods.domain.repository.cache.UserListCacheRepository
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
+import java.lang.IllegalStateException
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
 import org.junit.Test
-import java.lang.IllegalStateException
 
 class GetUserCachedUseCaseTest {
 
@@ -28,7 +28,6 @@ class GetUserCachedUseCaseTest {
         const val USER_ID = "user-id"
     }
 
-
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
@@ -41,7 +40,6 @@ class GetUserCachedUseCaseTest {
         stubResponse(fakeUser)
         getUserCachedUseCase.execute(null)
     }
-
 
     @Test
     fun `verify that execute returns a user`() = runBlockingTest {
@@ -56,6 +54,4 @@ class GetUserCachedUseCaseTest {
     private fun stubResponse(fakeUser: User) {
         coEvery { repository.getUser(any()) } returns flowOf(fakeUser)
     }
-
-
 }

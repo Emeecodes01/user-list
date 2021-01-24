@@ -162,6 +162,9 @@ object TestDependencies {
         const val espressoCore = "3.3.0"
         const val annotation = "1.1.0"
         const val truth = "1.0.1"
+        const val rule = "1.1.0"
+        const val lifecycle = "2.1.0"
+        const val coreTestingExt = "1.3.0-rc01"
     }
 
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
@@ -172,6 +175,10 @@ object TestDependencies {
     const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
     const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineTest}"
     const val truth = "com.google.truth:truth:${Versions.truth}"
+    const val rules = "androidx.test:rules:${Versions.rule}"
+    const val runner = "androidx.test:runner:${Versions.rule}"
+    const val coreTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
+    const val coreTestingExt = "androidx.test:core-ktx:${Versions.coreTestingExt}"
 }
 
 
@@ -254,6 +261,10 @@ fun DependencyHandler.unitTestDeps() {
     add("testImplementation", TestDependencies.coroutineTest)
     add("testImplementation", TestDependencies.truth)
     add("testImplementation", TestDependencies.mockk)
+    add("testImplementation", TestDependencies.rules)
+    add("testImplementation", TestDependencies.coreTesting)
+    add("testImplementation", TestDependencies.coreTestingExt)
+    add("testImplementation", TestDependencies.runner)
 }
 
 
@@ -263,6 +274,7 @@ fun DependencyHandler.androidUITestDeps() {
     add("androidTestImplementation", TestDependencies.annotation)
     add("androidTestImplementation", TestDependencies.truth)
     add("androidTestImplementation", TestDependencies.konveyor)
+    add("androidTestImplementation", TestDependencies.rules)
 }
 
 

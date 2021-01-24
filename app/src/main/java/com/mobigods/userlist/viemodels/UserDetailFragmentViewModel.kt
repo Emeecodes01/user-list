@@ -10,6 +10,7 @@ import com.mobigods.domain.interactors.users.GetUserRemoteUseCase
 import com.mobigods.userlist.mappers.UserModelMapper
 import com.mobigods.userlist.models.UserModel
 import com.mobigods.userlist.ui.states.UserListResource
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -22,10 +23,15 @@ class UserDetailFragmentViewModel @ViewModelInject constructor(
     private val _user: MutableLiveData<UserListResource<UserModel>> = MutableLiveData()
     val user: LiveData<UserListResource<UserModel>> = _user
 
+    private val errorHandler = CoroutineExceptionHandler { _, throwable ->
+        throwable.printStackTrace()
+        _user.value = UserListResource.Error(throwable.message)
+    }
+
     fun getUserDetail(userId: String) {
         getUserRemote(userId)
 
-        viewModelScope.launch {
+        viewModelScope.launch(errorHandler) {
             getUserCachedUseCase.execute(userId).collect { user ->
                 user?.let {
                     _user.value = UserListResource.Success(userModelMapper.mapTo(user))
@@ -35,7 +41,7 @@ class UserDetailFragmentViewModel @ViewModelInject constructor(
     }
 
     private fun getUserRemote(userId: String) {
-        viewModelScope.launch {
+        viewModelScope.launch(errorHandler) {
             getUserRemoteUseCase.invoke(userId)
         }
     }

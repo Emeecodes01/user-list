@@ -17,7 +17,7 @@ object Config {
 
     object Android {
         const val applicationId = "com.mobigods.userlist"
-        const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
+        const val testRunner = "com.mobigods.userlist.UserListTestRunner"
     }
 
 
@@ -165,6 +165,7 @@ object TestDependencies {
         const val rule = "1.1.0"
         const val lifecycle = "2.1.0"
         const val coreTestingExt = "1.3.0-rc01"
+        const val hiltTesting = "2.28-alpha"
     }
 
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
@@ -172,6 +173,7 @@ object TestDependencies {
     const val junit = "junit:junit:${Versions.junitVersion}"
     const val androidJunit = "androidx.test.ext:junit:${Versions.androidJunit}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
+    const val espressoContri = "androidx.test.espresso:espresso-contrib:${Versions.espressoCore}"
     const val annotation = "androidx.annotation:annotation:${Versions.annotation}"
     const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutineTest}"
     const val truth = "com.google.truth:truth:${Versions.truth}"
@@ -179,6 +181,9 @@ object TestDependencies {
     const val runner = "androidx.test:runner:${Versions.rule}"
     const val coreTesting = "androidx.arch.core:core-testing:${Versions.lifecycle}"
     const val coreTestingExt = "androidx.test:core-ktx:${Versions.coreTestingExt}"
+    const val hiltTesting = "com.google.dagger:hilt-android-testing:${Versions.hiltTesting}"
+    const val hiltTestCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltTesting}"
+    const val androidxTestCore = "androidx.test:core:${Versions.rule}"
 }
 
 
@@ -275,6 +280,10 @@ fun DependencyHandler.androidUITestDeps() {
     add("androidTestImplementation", TestDependencies.truth)
     add("androidTestImplementation", TestDependencies.konveyor)
     add("androidTestImplementation", TestDependencies.rules)
+    add("androidTestImplementation", TestDependencies.espressoContri)
+    add("androidTestImplementation", TestDependencies.androidxTestCore)
+    add("androidTestImplementation", TestDependencies.hiltTesting)
+    add("kaptAndroidTest", TestDependencies.hiltTestCompiler)
 }
 
 

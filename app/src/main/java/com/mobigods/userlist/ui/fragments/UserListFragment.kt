@@ -13,7 +13,7 @@ import com.mobigods.userlist.ui.states.UserListState
 import com.mobigods.userlist.viemodels.UserListFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import jp.wasabeef.recyclerview.animators.SlideInRightAnimator
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 
 @AndroidEntryPoint
 class UserListFragment : BaseFragment<FragmentUserListBinding>(),
@@ -33,9 +33,9 @@ class UserListFragment : BaseFragment<FragmentUserListBinding>(),
         usersAdapter.listener = this
 
         binding.usersRv.apply {
-            itemAnimator = SlideInRightAnimator().apply {
-                addDuration = 400
-                changeDuration = 400
+            itemAnimator = SlideInUpAnimator().apply {
+                addDuration = 300
+                changeDuration = 300
             }
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             layoutManager = LinearLayoutManager(requireContext())

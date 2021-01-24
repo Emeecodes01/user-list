@@ -22,7 +22,7 @@ This uses a modified version of **clean architecture(Layered)**
 
 - Dependency injection: [Dagger Hilt](https://dagger.dev/hilt/)
 - Design system: [Material design](https://material.io/design)
-- CI: [circle ci](https://circleci.com/)
+- CI: [circle ci](https://circleci.com/) ,To run unit tests and check code quality
 - Code quality and linting: [ktlint](https://github.com/pinterest/ktlint) and [spotless](https://github.com/diffplug/spotless)
 - Data: [Datastore](https://developer.android.com/topic/libraries/architecture/datastore), [Room](https://developer.android.com/training/data-storage/room)
 - Networking: [Retrofit](https://square.github.io/retrofit/)

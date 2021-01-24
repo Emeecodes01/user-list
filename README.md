@@ -8,7 +8,7 @@ A simple app that displays list of users from [https://dummyapi.io/](https://dum
 
 This uses a modified version of **clean architecture(Layered)**
 
-![UserList%207cc2155daa714bb29fcd44707bf46c2c/userlist_arch.png](UserList%207cc2155daa714bb29fcd44707bf46c2c/userlist_arch.png)
+![userlist_arch.png](SCREENDATA/userlist_arch.png)
 
 **Domain**: provides an interface for cache and remote layer and also provides use cases for the app module to consume 
 
@@ -28,3 +28,7 @@ This uses a modified version of **clean architecture(Layered)**
 - Networking: [Retrofit](https://square.github.io/retrofit/)
 - Navigation: [Navigation component](https://developer.android.com/guide/navigation/navigation-getting-started)
 - Testing: [Mockk](https://mockk.io/), [Truth](https://truth.dev/), [konveryor](https://github.com/Vacxe/Konveyor), [espresso](https://developer.android.com/training/testing/espresso), ..
+
+## TODO
+- Add more UI test
+- Use WebMockServer

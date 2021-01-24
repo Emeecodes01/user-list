@@ -16,6 +16,10 @@ class UserDaoTest {
     private lateinit var testDb: AppDatabase
     private lateinit var userDao: UserDao
 
+    companion object {
+        const val DUMMY_NAME = "Emmanuel"
+    }
+
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
@@ -61,7 +65,22 @@ class UserDaoTest {
         userDao.saveUser(user)
 
         val savedUser = userDao.getUser(user.id)
-        assertThat(savedUser)
+        assertThat(savedUser.first())
             .isEqualTo(user)
+    }
+
+    @Test
+    fun verify_that_update_actually_updates_a_user() = runBlocking {
+        val user = CacheDataGenerator.generateUserCache()
+        userDao.saveUser(user)
+        user.firstName = DUMMY_NAME
+        val rowId = userDao.updateUser(user)
+        val updatedUser = userDao.getUser(user.id)
+
+        assertThat(rowId)
+            .isGreaterThan(0)
+
+        assertThat(updatedUser.first().firstName)
+            .isEqualTo(DUMMY_NAME)
     }
 }

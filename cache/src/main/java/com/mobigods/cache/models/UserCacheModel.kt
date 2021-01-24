@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "users")
 data class UserCacheModel(
     val email: String,
-    val firstName: String,
+    var firstName: String,
     @PrimaryKey
     val id: String,
     val lastName: String,

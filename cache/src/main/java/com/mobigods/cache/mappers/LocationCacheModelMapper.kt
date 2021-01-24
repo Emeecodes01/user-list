@@ -5,7 +5,7 @@ import com.mobigods.domain.base.BaseMapper
 import com.mobigods.domain.models.Location
 import javax.inject.Inject
 
-class LocationCacheModelMapper @Inject constructor(): BaseMapper<LocationCacheModel, Location> {
+class LocationCacheModelMapper @Inject constructor() : BaseMapper<LocationCacheModel, Location> {
 
     override fun mapTo(to: Location): LocationCacheModel {
         return LocationCacheModel(
@@ -26,5 +26,4 @@ class LocationCacheModelMapper @Inject constructor(): BaseMapper<LocationCacheMo
             timezone = from.timezone
         )
     }
-
 }

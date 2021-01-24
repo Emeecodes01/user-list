@@ -1,6 +1,5 @@
 package com.mobigods.remote.modules
 
-
 import com.mobigods.domain.repository.remote.UserListRemoteRepository
 import com.mobigods.remote.impl.UserListRemoteImpl
 import dagger.Binds
@@ -18,6 +17,4 @@ abstract class RemoteImplModule {
     abstract fun bindSubjectImpl(
         impl: UserListRemoteImpl
     ): UserListRemoteRepository
-
-
 }

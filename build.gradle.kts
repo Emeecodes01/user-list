@@ -26,6 +26,10 @@ allprojects {
     }
 }
 
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+subprojects {
+    apply(from = "../system/spotless.gradle")
 }
+
+//tasks.register("clean", Delete::class) {
+//    delete(rootProject.buildDir)
+//}

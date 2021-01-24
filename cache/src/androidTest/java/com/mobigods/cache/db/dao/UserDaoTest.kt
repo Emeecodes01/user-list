@@ -3,16 +3,12 @@ package com.mobigods.cache.db.dao
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.google.common.truth.Truth
-import com.google.common.truth.Truth.*
+import com.google.common.truth.Truth.assertThat
 import com.mobigods.cache.db.AppDatabase
 import com.mobigods.cache.testutils.CacheDataGenerator
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.single
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
-
-import org.junit.Assert.*
 import org.junit.Test
 
 class UserDaoTest {
@@ -20,12 +16,12 @@ class UserDaoTest {
     private lateinit var testDb: AppDatabase
     private lateinit var userDao: UserDao
 
-
     @Before
     fun setUp() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         testDb = Room.inMemoryDatabaseBuilder(
-            context, AppDatabase::class.java).build()
+            context, AppDatabase::class.java
+        ).build()
 
         userDao = testDb.userDao()
     }
@@ -39,7 +35,6 @@ class UserDaoTest {
             .isGreaterThan(0)
     }
 
-
     @Test
     fun verify_that_saveAllUsers_saves_a_list_of_users() = runBlocking {
         val users = CacheDataGenerator.generateUserCacheList(5)
@@ -48,7 +43,6 @@ class UserDaoTest {
         assertThat(ids)
             .isNotEmpty()
     }
-
 
     @Test
     fun verify_that_getAllUsers_returns_all_users() = runBlocking {
@@ -61,17 +55,13 @@ class UserDaoTest {
             .isEqualTo(users[0])
     }
 
-
-
     @Test
     fun verify_that_get_a_user_returns_a_user() = runBlocking {
         val user = CacheDataGenerator.generateUserCache()
         userDao.saveUser(user)
 
-
         val savedUser = userDao.getUser(user.id)
         assertThat(savedUser)
             .isEqualTo(user)
     }
-
 }

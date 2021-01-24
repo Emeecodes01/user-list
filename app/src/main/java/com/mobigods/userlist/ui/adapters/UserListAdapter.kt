@@ -1,7 +1,6 @@
 package com.mobigods.userlist.ui.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mobigods.userlist.databinding.LayoutUserItemBinding
@@ -12,7 +11,7 @@ import com.mobigods.userlist.utils.extensions.onClick
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class UserListAdapter @Inject constructor(private val imageLoader: ImageLoader):
+class UserListAdapter @Inject constructor(private val imageLoader: ImageLoader) :
     RecyclerView.Adapter<UserListAdapter.UserListViewHolder>(),
     AutoUpdateRV {
 
@@ -35,7 +34,7 @@ class UserListAdapter @Inject constructor(private val imageLoader: ImageLoader):
 
     override fun getItemCount(): Int = users.size
 
-    inner class UserListViewHolder(private val binding: LayoutUserItemBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class UserListViewHolder(private val binding: LayoutUserItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bindView(pos: Int) {
             val user = users[pos]
             binding.fullName.text = "${user.firstName} ${user.lastName}"

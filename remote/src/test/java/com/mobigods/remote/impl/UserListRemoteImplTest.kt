@@ -1,8 +1,6 @@
 package com.mobigods.remote.impl
 
-import com.google.common.truth.Truth
-import com.google.common.truth.Truth.*
-import com.mobigods.domain.models.User
+import com.google.common.truth.Truth.assertThat
 import com.mobigods.domain.repository.cache.IDataStoreManager
 import com.mobigods.domain.repository.cache.UserListCacheRepository
 import com.mobigods.remote.mappers.LocationRemoteMapper
@@ -16,8 +14,6 @@ import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
-
-import org.junit.Assert.*
 import org.junit.Test
 
 class UserListRemoteImplTest {
@@ -56,8 +52,6 @@ class UserListRemoteImplTest {
             .isEqualTo(10)
     }
 
-
-
     @Test
     fun `verify that fetchUser returns a list of users`() = runBlockingTest {
         val user = RemoteDataFactory.getUser()
@@ -77,5 +71,4 @@ class UserListRemoteImplTest {
         coEvery { service.fetchUsers() } returns response
         coEvery { cache.saveAllUsers(any()) } returns listOf()
     }
-
 }

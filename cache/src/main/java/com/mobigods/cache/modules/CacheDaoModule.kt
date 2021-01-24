@@ -8,13 +8,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(ApplicationComponent::class)
 class CacheDaoModule {
 
     @Provides
     @Singleton
-    fun provideUserDao(database: AppDatabase): UserDao
-    = database.userDao()
+    fun provideUserDao(database: AppDatabase): UserDao =
+    database.userDao()
 }

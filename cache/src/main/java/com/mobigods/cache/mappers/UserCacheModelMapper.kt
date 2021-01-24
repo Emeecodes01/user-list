@@ -8,8 +8,7 @@ import javax.inject.Inject
 
 class UserCacheModelMapper @Inject constructor(
     private val locationCacheModelMapper: LocationCacheModelMapper
-): BaseMapper<UserCacheModel, User> {
-
+) : BaseMapper<UserCacheModel, User> {
 
     override fun mapTo(to: User): UserCacheModel {
         return UserCacheModel(
@@ -40,5 +39,4 @@ class UserCacheModelMapper @Inject constructor(
             location = locationCacheModelMapper.mapFrom(from.location ?: LocationCacheModel())
         )
     }
-
 }

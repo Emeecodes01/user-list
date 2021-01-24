@@ -1,8 +1,6 @@
 package com.mobigods.userlist.models
 
-import com.mobigods.domain.models.Location
-
-data class UserModel (
+data class UserModel(
     val email: String,
     val firstName: String,
     val id: String,

@@ -17,8 +17,7 @@ import cc.cloudist.acplibrary.ACProgressFlower
 import com.google.android.material.snackbar.Snackbar
 import com.mobigods.userlist.R
 
-
-abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
+abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     lateinit var binding: T
 
     abstract val layoutRes: Int
@@ -33,7 +32,6 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
         binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,16 +48,13 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
         findNavController().navigate(navDirections)
     }
 
-
     fun goBack() {
         findNavController().navigateUp()
     }
 
-
     fun showSnackMessage(message: String) {
         Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT).show()
     }
-
 
     fun showToastMessage(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
@@ -73,7 +68,6 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
         dialog.dismiss()
     }
 
-
     protected fun setBackPressedListener(actionToPerform: () -> Unit) {
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -81,6 +75,4 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment() {
             }
         })
     }
-
-
 }

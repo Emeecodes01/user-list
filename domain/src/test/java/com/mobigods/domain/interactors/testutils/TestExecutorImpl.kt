@@ -4,7 +4,7 @@ import com.mobigods.domain.thread.ExecutionThread
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 
-class TestExecutionThreadImpl: ExecutionThread {
+class TestExecutionThreadImpl : ExecutionThread {
     override fun io(): CoroutineDispatcher = TestCoroutineDispatcher()
     override fun ui(): CoroutineDispatcher = TestCoroutineDispatcher()
     override fun default(): CoroutineDispatcher = TestCoroutineDispatcher()

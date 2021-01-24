@@ -13,7 +13,6 @@ abstract class SuspendUseCase<in PARAMS, out RESULT>(
         }
     }
 
-
     @Throws(RuntimeException::class)
     protected abstract suspend fun execute(params: PARAMS?): RESULT
 }

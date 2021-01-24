@@ -1,8 +1,6 @@
 package com.mobigods.remote.models
 
-import com.mobigods.domain.models.Location
-
-data class UserRemoteModel (
+data class UserRemoteModel(
     val email: String,
     val firstName: String,
     val id: String,

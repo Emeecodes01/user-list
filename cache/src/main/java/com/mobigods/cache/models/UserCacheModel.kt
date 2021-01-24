@@ -3,7 +3,6 @@ package com.mobigods.cache.models
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mobigods.domain.models.Location
 
 @Entity(tableName = "users")
 data class UserCacheModel(

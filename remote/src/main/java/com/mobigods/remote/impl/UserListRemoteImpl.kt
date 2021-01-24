@@ -5,7 +5,6 @@ import com.mobigods.domain.repository.cache.IDataStoreManager
 import com.mobigods.domain.repository.cache.UserListCacheRepository
 import com.mobigods.domain.repository.remote.UserListRemoteRepository
 import com.mobigods.remote.mappers.UserRemoteModelMapper
-import com.mobigods.remote.models.UserRemoteModel
 import com.mobigods.remote.services.UserListService
 import javax.inject.Inject
 
@@ -14,8 +13,7 @@ class UserListRemoteImpl @Inject constructor(
     private val localRepository: UserListCacheRepository,
     private val dataStoreManager: IDataStoreManager,
     private val userRemoteModelMapper: UserRemoteModelMapper
-): UserListRemoteRepository {
-
+) : UserListRemoteRepository {
 
     override suspend fun fetchUsers(): List<User> {
         val users = service.fetchUsers().data.map { userRemoteModelMapper.mapFrom(it) }
@@ -29,5 +27,4 @@ class UserListRemoteImpl @Inject constructor(
         localRepository.saveUser(user)
         return user
     }
-
 }

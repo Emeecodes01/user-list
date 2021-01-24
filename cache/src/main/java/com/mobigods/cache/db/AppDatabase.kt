@@ -6,12 +6,11 @@ import com.mobigods.cache.db.dao.UserDao
 import com.mobigods.cache.models.UserCacheModel
 import com.mobigods.cache.utils.constants.CacheConstants
 
-
 @Database(
     entities = [UserCacheModel::class],
     version = CacheConstants.DB_VERSION,
     exportSchema = true
 )
-abstract class AppDatabase: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 }

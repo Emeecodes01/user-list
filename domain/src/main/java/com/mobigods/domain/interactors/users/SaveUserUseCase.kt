@@ -9,12 +9,10 @@ import javax.inject.Inject
 class SaveUserUseCase @Inject constructor(
     executionThread: ExecutionThread,
     private val cacheRepository: UserListCacheRepository
-): SuspendUseCase<User, Unit>(executionThread) {
-
+) : SuspendUseCase<User, Unit>(executionThread) {
 
     override suspend fun execute(params: User?) {
         checkNotNull(params)
         cacheRepository.saveUser(params)
     }
-
 }

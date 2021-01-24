@@ -5,7 +5,7 @@ import com.mobigods.domain.models.Location
 import com.mobigods.userlist.models.LocationModel
 import javax.inject.Inject
 
-class LocationModelMapper @Inject constructor(): BaseMapper<LocationModel, Location> {
+class LocationModelMapper @Inject constructor() : BaseMapper<LocationModel, Location> {
     override fun mapTo(to: Location): LocationModel {
         return LocationModel(
             city = to.city,
@@ -25,6 +25,4 @@ class LocationModelMapper @Inject constructor(): BaseMapper<LocationModel, Locat
             timezone = from.timezone
         )
     }
-
-
 }

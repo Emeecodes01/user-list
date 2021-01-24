@@ -1,6 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-
 plugins {
     id ("com.android.application")
     kotlin("android")
@@ -8,6 +7,10 @@ plugins {
     id("androidx.navigation.safeargs")
     id("dagger.hilt.android.plugin")
 }
+
+//apply {
+//    from("${project.rootDir}/system/spotless.gradle")
+//}
 
 android {
     compileSdkVersion(Config.Versions.compileSdkVer)

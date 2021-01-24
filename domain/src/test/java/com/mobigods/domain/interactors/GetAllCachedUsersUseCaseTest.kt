@@ -1,6 +1,6 @@
 package com.mobigods.domain.interactors
 
-import com.google.common.truth.Truth.*
+import com.google.common.truth.Truth.assertThat
 import com.mobigods.domain.interactors.testutils.DataGenerator
 import com.mobigods.domain.interactors.testutils.TestExecutionThreadImpl
 import com.mobigods.domain.interactors.users.GetAllCachedUsersUseCase
@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
-
 import org.junit.Test
 
 class GetAllCachedUsersUseCaseTest {
@@ -31,7 +30,6 @@ class GetAllCachedUsersUseCaseTest {
         getAllCachedUsersUseCase = GetAllCachedUsersUseCase(testImpl, cacheRepository)
     }
 
-
     @Test
     fun `verify that when execute is called cacheRepository is called`() {
         stubResponse(DataGenerator.getFakeUsers(5))
@@ -40,9 +38,8 @@ class GetAllCachedUsersUseCaseTest {
         verify(exactly = 1) { cacheRepository.getAllUsers() }
     }
 
-
     @Test
-    fun `verify that execute returns the correct values`() = runBlockingTest{
+    fun `verify that execute returns the correct values`() = runBlockingTest {
         val users = DataGenerator.getFakeUsers(5)
         stubResponse(users)
         val result = getAllCachedUsersUseCase.execute().first()
@@ -57,5 +54,4 @@ class GetAllCachedUsersUseCaseTest {
     private fun stubResponse(users: List<User>) {
         coEvery { cacheRepository.getAllUsers() } returns flowOf(users)
     }
-
 }

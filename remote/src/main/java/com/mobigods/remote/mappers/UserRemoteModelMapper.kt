@@ -1,7 +1,5 @@
 package com.mobigods.remote.mappers
 
-import android.location.LocationManager
-import com.mobigods.domain.models.Location
 import com.mobigods.domain.models.User
 import com.mobigods.remote.BaseMapper
 import com.mobigods.remote.models.LocationRemoteModel
@@ -26,7 +24,6 @@ class UserRemoteModelMapper @Inject constructor(
         )
     }
 
-
     override fun mapFrom(from: UserRemoteModel): User {
         return User(
             id = from.id,
@@ -43,5 +40,4 @@ class UserRemoteModelMapper @Inject constructor(
             )
         )
     }
-
 }

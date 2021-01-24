@@ -5,7 +5,7 @@ import com.mobigods.remote.BaseMapper
 import com.mobigods.remote.models.LocationRemoteModel
 import javax.inject.Inject
 
-class LocationRemoteMapper @Inject constructor(): BaseMapper<LocationRemoteModel, Location>{
+class LocationRemoteMapper @Inject constructor() : BaseMapper<LocationRemoteModel, Location> {
     override fun mapTo(to: Location): LocationRemoteModel {
 
         return LocationRemoteModel(
@@ -26,5 +26,4 @@ class LocationRemoteMapper @Inject constructor(): BaseMapper<LocationRemoteModel
             timezone = from.timezone
         )
     }
-
 }

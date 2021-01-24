@@ -18,5 +18,4 @@ interface AutoUpdateRV {
         val diff = DiffUtil.calculateDiff(diffCallback)
         diff.dispatchUpdatesTo(this)
     }
-
 }

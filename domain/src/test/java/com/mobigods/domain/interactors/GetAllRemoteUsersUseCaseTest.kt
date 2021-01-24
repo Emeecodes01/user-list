@@ -1,6 +1,6 @@
 package com.mobigods.domain.interactors
 
-import com.google.common.truth.Truth.*
+import com.google.common.truth.Truth.assertThat
 import com.mobigods.domain.interactors.testutils.DataGenerator
 import com.mobigods.domain.interactors.testutils.TestExecutionThreadImpl
 import com.mobigods.domain.interactors.users.GetAllRemoteUsersUseCase
@@ -12,7 +12,6 @@ import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
-
 import org.junit.Test
 
 class GetAllRemoteUsersUseCaseTest {
@@ -29,13 +28,12 @@ class GetAllRemoteUsersUseCaseTest {
         getAllRemoteUsersUseCase = GetAllRemoteUsersUseCase(testImpl, remoteRepository)
     }
 
-
     @Test
     fun `returns list of users when invoke is called`() = runBlockingTest {
         stubResponse(DataGenerator.getFakeUsers(3))
         val users = getAllRemoteUsersUseCase.invoke()
 
-        coVerify (exactly = 1) { remoteRepository.fetchUsers() }
+        coVerify(exactly = 1) { remoteRepository.fetchUsers() }
 
         assertThat(users)
             .isNotEmpty()
@@ -44,9 +42,7 @@ class GetAllRemoteUsersUseCaseTest {
             .isEqualTo(3)
     }
 
-
     private fun stubResponse(fakeUsers: List<User>) {
         coEvery { remoteRepository.fetchUsers() } returns fakeUsers
     }
-
 }

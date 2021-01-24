@@ -1,7 +1,7 @@
 package com.mobigods.userlist.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.mobigods.userlist.R
 import dagger.hilt.android.AndroidEntryPoint
 

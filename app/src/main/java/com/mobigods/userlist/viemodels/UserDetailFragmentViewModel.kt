@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mobigods.domain.interactors.users.GetUserCachedUseCase
 import com.mobigods.domain.interactors.users.GetUserRemoteUseCase
-import com.mobigods.domain.models.User
 import com.mobigods.userlist.mappers.UserModelMapper
 import com.mobigods.userlist.models.UserModel
 import com.mobigods.userlist.ui.states.UserListResource
@@ -18,11 +17,10 @@ class UserDetailFragmentViewModel @ViewModelInject constructor(
     private val getUserRemoteUseCase: GetUserRemoteUseCase,
     private val getUserCachedUseCase: GetUserCachedUseCase,
     private val userModelMapper: UserModelMapper
-): ViewModel() {
+) : ViewModel() {
 
     private val _user: MutableLiveData<UserListResource<UserModel>> = MutableLiveData()
     val user: LiveData<UserListResource<UserModel>> = _user
-
 
     fun getUserDetail(userId: String) {
         getUserRemote(userId)
@@ -34,15 +32,11 @@ class UserDetailFragmentViewModel @ViewModelInject constructor(
                 }
             }
         }
-
     }
-
 
     private fun getUserRemote(userId: String) {
         viewModelScope.launch {
             getUserRemoteUseCase.invoke(userId)
         }
     }
-
-
 }

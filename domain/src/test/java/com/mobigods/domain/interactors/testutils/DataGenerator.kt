@@ -5,7 +5,7 @@ import konveyor.base.randomBuild
 
 object DataGenerator {
 
-    fun<T> generateList(count: Int, action: () -> T): List<T> {
+    fun <T> generateList(count: Int, action: () -> T): List<T> {
         return mutableListOf<T>().apply {
             repeat(count) {
                 add(action.invoke())
@@ -23,5 +23,4 @@ object DataGenerator {
             randomBuild(), randomBuild(), randomBuild()
         )
     }
-
 }

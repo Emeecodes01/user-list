@@ -8,11 +8,11 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
@@ -24,7 +24,6 @@ class OkhttpModule {
         val cacheDir = context.cacheDir
         return Cache(cacheDir, 5 * 1000 * 1000)
     }
-
 
     @Provides
     @Singleton
@@ -41,5 +40,4 @@ class OkhttpModule {
             cache(cache)
         }
     }
-
 }

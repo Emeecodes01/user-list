@@ -18,6 +18,5 @@ class DataBaseModule {
     @Provides
     @Singleton
     fun provideUseFormsDatabase(@ApplicationContext context: Context): AppDatabase =
-        database(context, CacheConstants.DATABASE_NAME){}
-
+        database(context, CacheConstants.DATABASE_NAME) {}
 }

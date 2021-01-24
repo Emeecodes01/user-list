@@ -1,6 +1,5 @@
 package com.mobigods.userlist.utils
 
-import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView

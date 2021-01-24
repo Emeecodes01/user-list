@@ -10,7 +10,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
-
 @Module
 @InstallIn(ApplicationComponent::class)
 abstract class UtilityModule {
@@ -26,5 +25,4 @@ abstract class UtilityModule {
     abstract fun bindImageLoaderImpl(
         impl: ImageLoaderImpl
     ): ImageLoader
-
 }

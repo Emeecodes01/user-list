@@ -5,10 +5,10 @@ import com.mobigods.cache.mappers.UserCacheModelMapper
 import com.mobigods.cache.models.UserCacheModel
 import com.mobigods.domain.models.User
 import com.mobigods.domain.repository.cache.UserListCacheRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flowOf
-import javax.inject.Inject
 
 class UserListCacheRepositoryImpl @Inject constructor(
     private val userDao: UserDao,
@@ -29,11 +29,9 @@ class UserListCacheRepositoryImpl @Inject constructor(
         }
     }
 
-
     override fun getUser(userId: String): Flow<User> {
         return userDao.getUser(userId).flatMapConcat { value: UserCacheModel ->
             flowOf(userCacheModelMapper.mapFrom(value))
         }
     }
-
 }

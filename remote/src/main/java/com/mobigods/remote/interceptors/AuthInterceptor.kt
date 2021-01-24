@@ -4,9 +4,8 @@ import android.provider.UserDictionary.Words.APP_ID
 import com.mobigods.remote.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
-import javax.inject.Inject
 
-class AuthInterceptor: Interceptor {
+class AuthInterceptor : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
 
@@ -15,5 +14,4 @@ class AuthInterceptor: Interceptor {
 
         return chain.proceed(newRequest.build())
     }
-
 }

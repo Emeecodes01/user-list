@@ -11,13 +11,11 @@ fun gson(block: GsonBuilder.() -> Unit): Gson {
         .create()
 }
 
-
 fun retrofit(block: Retrofit.Builder.() -> Unit): Retrofit {
     return Retrofit.Builder()
         .apply(block)
         .build()
 }
-
 
 fun okhttp(block: OkHttpClient.Builder.() -> Unit): OkHttpClient {
     return OkHttpClient.Builder()
@@ -25,6 +23,6 @@ fun okhttp(block: OkHttpClient.Builder.() -> Unit): OkHttpClient {
         .build()
 }
 
-inline fun<reified T> service(retrofit: Retrofit): T {
+inline fun <reified T> service(retrofit: Retrofit): T {
     return retrofit.create(T::class.java)
 }

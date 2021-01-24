@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.flowOn
 
 abstract class FlowUseCase<in Params, T> constructor(
     private val threadExecutor: ExecutionThread
-){
+) {
 
     abstract fun buildFlowUseCase(params: Params? = null): Flow<T>
 
@@ -14,5 +14,4 @@ abstract class FlowUseCase<in Params, T> constructor(
         return this.buildFlowUseCase(params)
             .flowOn(threadExecutor.io())
     }
-
 }

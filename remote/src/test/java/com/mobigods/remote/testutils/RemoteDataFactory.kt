@@ -1,6 +1,5 @@
 package com.mobigods.remote.testutils
 
-import com.mobigods.domain.models.User
 import com.mobigods.remote.models.BaseResponseModel
 import com.mobigods.remote.models.UserRemoteModel
 import konveyor.base.randomBuild
@@ -15,7 +14,7 @@ object RemoteDataFactory {
         return list
     }
 
-    fun getResponseModelFake(): BaseResponseModel<UserRemoteModel>{
+    fun getResponseModelFake(): BaseResponseModel<UserRemoteModel> {
         return BaseResponseModel(
             data = getUsers(10),
             total = 100,
@@ -24,7 +23,6 @@ object RemoteDataFactory {
             offset = 2
         )
     }
-
 
     fun getUser() = UserRemoteModel(
         randomBuild(), randomBuild(), randomBuild(),

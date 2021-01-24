@@ -20,11 +20,10 @@ class UserListFragmentViewModel @ViewModelInject constructor(
     private val getAllCachedUsersUseCase: GetAllCachedUsersUseCase,
     private val getUserUserListSetUpUseCase: GetUserListSetUpUseCase,
     private val userModelMapper: UserModelMapper
-): ViewModel() {
+) : ViewModel() {
 
     private val _userListRemote: MutableLiveData<UserListResource<Unit>> = MutableLiveData()
     val userListRemote: LiveData<UserListResource<Unit>> = _userListRemote
-
 
     private val _userList: MutableLiveData<UserListResource<List<UserModel>>> = MutableLiveData()
     val userList: LiveData<UserListResource<List<UserModel>>> = _userList
@@ -34,31 +33,26 @@ class UserListFragmentViewModel @ViewModelInject constructor(
         _userListRemote.value = UserListResource.Error(throwable.message)
     }
 
-
     fun getUsers() {
         getCachedUsers()
-        viewModelScope.launch (errorHandler) {
+        viewModelScope.launch(errorHandler) {
             if (!getUserUserListSetUpUseCase.invoke())
                 getRemoteUsers()
         }
     }
 
-
     private fun getCachedUsers() {
         viewModelScope.launch {
             getAllCachedUsersUseCase.execute().collect {
-                _userList.value = UserListResource.Success(it.map { user -> userModelMapper.mapTo(user) })
+                _userList.value =
+                    UserListResource.Success(it.map { user -> userModelMapper.mapTo(user) })
             }
         }
     }
 
-
-
     private suspend fun getRemoteUsers() {
         _userListRemote.value = UserListResource.Loading()
-         getUserListUseCase.invoke()
+        getUserListUseCase.invoke()
         _userListRemote.value = UserListResource.Success(Unit)
     }
-
-
 }

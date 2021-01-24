@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class UserModelMapper @Inject constructor(
     private val mapper: LocationModelMapper
-): BaseMapper<UserModel, User> {
+) : BaseMapper<UserModel, User> {
 
     override fun mapTo(to: User): UserModel {
         return UserModel(
